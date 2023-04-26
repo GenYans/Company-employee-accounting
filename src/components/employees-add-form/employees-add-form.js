@@ -37,6 +37,7 @@ class EmployeesAddForm extends Component {
                     onSubmit={this.onSubmit}
                     className="add-form d-flex">
                     <input type="text"
+                        minLength={3}
                         className="form-control new-post-label"
                         placeholder="Как его зовут?" 
                         name='name'
