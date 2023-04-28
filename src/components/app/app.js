@@ -78,23 +78,34 @@ class App extends Component {
                 return items.filter(item => item.like); // if(item.rise) return
             case 'moreThen1000': 
                 return items.filter(item => item.salary > 1000);
+            case 'bonus': 
+                return items.filter(item => item.increase);
             default: 
                 return items //Никак не фильтруем элементы 
         }
     }
 
+    onFilterSelect = (filter) => { //То с чем может повзоимодействовать пользователь 
+        this.setState({filter});
+    }
+
+
     render() {
         const {data, term, filter} = this.state;
         const employees = this.state.data.length;
         const increased = this.state.data.filter(item => item.increase).length;
+        const initialValue = 0;
+        const sum = this.state.data.reduce(function (accumulator, currentValue) {
+            return accumulator + currentValue.salary;
+        }, initialValue) + ' $';
         const visibleData = this.onFilterPost(this.searchEmp(data, term), filter); // Фильтруем отфильтрованный массив 
         return (
             <div className="app">
-                <AppInfo employees={employees} increased={increased}/>
+                <AppInfo employees={employees} increased={increased} salary={sum}/>
     
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-                    <AppFilter filter={filter}/>
+                    <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
                 </div>
                 
                 <EmployeesList 
