@@ -80,6 +80,10 @@ class App extends Component {
                 return items.filter(item => item.salary > 1000);
             case 'bonus': 
                 return items.filter(item => item.increase);
+            case 'evenElement':
+                return items.filter(item => item.id % 2 === 0)
+            case 'oddElement':
+                return items.filter(item => item.id % 2 !== 0)
             default: 
                 return items //Никак не фильтруем элементы 
         }
