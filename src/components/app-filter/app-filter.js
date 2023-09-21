@@ -6,8 +6,10 @@ const AppFilter = (props) => {
         {name: 'like', label: 'На повышение'},
         {name: 'moreThen1000', label: 'З/П больше 1000$'},
         {name: 'bonus', label: 'Премию получат'},
-        {name: 'evenElement', label: 'Четный элемент'},
-        {name: 'oddElement', label: 'Нечетный элемент'},
+        {name: 'evenElement', label: 'Четный'},
+        {name: 'oddElement', label: 'Нечетный'},
+        {name: 'first', label: 'Первый'},
+        {name: 'last', label: 'Последний'},
     ];
 
     const buttons = buttonsData.map(({name, label}) => {
